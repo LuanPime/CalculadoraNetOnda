@@ -59,12 +59,17 @@
         </div>
 
         <script>
-            function calcularValor() {
-                let valorPlanoStr = document.getElementById("valorPlano").value.replace(",", ".");
+           function calcularValor() {
+                let valorPlanoStr = document.getElementById("valorPlano").value;
+
+                // Substituir vírgulas por pontos para permitir números com vírgula
+                valorPlanoStr = valorPlanoStr.replace(",", ".");
+
                 const valorPlano = parseFloat(valorPlanoStr);
                 const dataInicial = new Date(document.getElementById("dataInicial").value);
                 const dataFinal = new Date(document.getElementById("dataFinal").value);
 
+                // Adicionar um dia à data final para incluir o último dia
                 const dataFinalIncluida = new Date(dataFinal);
                 dataFinalIncluida.setDate(dataFinalIncluida.getDate() + 1);
 
@@ -75,7 +80,18 @@
                 document.getElementById("valorProporcional").textContent = valorProporcional.toFixed(2);
                 document.getElementById("multaRescisoria").textContent = multaRescisoria.toFixed(2);
                 document.getElementById("quantidadeDias").textContent = diasContrato.toFixed(0);
-                document.getElementById("infoAdicional").textContent = "Proporcional de " + diasContrato.toFixed(0) + " dias, referente a " + formatarData(new Date(dataInicial)) + " até " + formatarData(dataFinalIncluida);
+
+                // Exibir a informação adicional
+                const novaDataInicial = new Date(dataInicial);
+                novaDataInicial.setDate(novaDataInicial.getDate() + 1);
+                document.getElementById("infoAdicional").textContent = "Proporcional de " + diasContrato.toFixed(0) + " dias, referente a " + formatarData(novaDataInicial) + " até " + formatarData(dataFinalIncluida);
+            }
+
+            function formatarData(data) {
+                const dia = String(data.getDate()).padStart(2, '0');
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                const ano = data.getFullYear();
+                return dia + '/' + mes + '/' + ano;
             }
 
             function calcularProporcional() {
@@ -101,12 +117,7 @@
                 resultadoDiv.innerHTML = `Proporcional de ${dias1} dias no plano ${mb1}MB + ${dias2} dias no plano ${mb2}MB<br>Valor: R$ ${valorTotal}`;
             }
 
-            function formatarData(data) {
-                const dia = String(data.getDate()).padStart(2, '0');
-                const mes = String(data.getMonth() + 1).padStart(2, '0');
-                const ano = data.getFullYear();
-                return dia + '/' + mes + '/' + ano;
-            }
+
         </script>
     </main>
 </body>
