@@ -14,9 +14,9 @@
             <input type="valor" id="valorPlano" placeholder="Digite o valor do plano">
 
             <label for="dataInicial">Data da última fatura:</label>
-            <input type="date" id="dataInicial">
+            <input type="date" id="dataInicial" title="Atenção aqui: É a data última fatura antes da data do cancelamento, esteja ela paga ou em aberto. :]">
 
-            <label for="dataFinal">Último dia de utilização do serviço:</label>
+            <label for="dataFinal" title=>Último dia de utilização do serviço:</label>
             <input type="date" id="dataFinal">
 
             <button onclick="calcularValor()">Calcular</button>
@@ -30,10 +30,10 @@
         </div>
 
         <div class="container">
-            <h2>Calculador de Proporcional</h2>
+            <h2 title="Isso aqui é principalmente para migração de plano.">Calculador de Migração</h2>
             <div class="form-row">
-                <label for="mb1">Plano 1 (MB):</label>
-                <input type="number" id="mb1" placeholder="Ex: 50">
+                <label for="mb1" >Plano 1 (MB):</label>
+                <input type="number" id="mb1" placeholder="Ex: 50" title="Se eu mudar o plano quanto vai ficar? Tipo isso...">
 
                 <label for="dias1">Dias:</label>
                 <input type="number" id="dias1" placeholder="Ex: 27">
@@ -114,8 +114,8 @@
 <footer>
     <p>Desenvolvido por Luan Eduardo</p>
     <div style="text-align: center;">
-        <img src="https://i.pinimg.com/originals/62/8b/8a/628b8ac3b63d7e1793e5b3f638792726.gif"
-            alt="Descrição da imagem" width="50" height="50" id="startImage">
+        <img src="https://i.gifer.com/6ka.gif"
+            alt="Não clique no bb" width="90" height="90" id="startImage" title="Se acostume não...">
     </div>
 </footer>
 
